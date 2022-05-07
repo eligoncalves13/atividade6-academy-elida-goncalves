@@ -1,0 +1,14 @@
+{
+  "name": "atividade6-academy",
+  "version": "1.0.0",
+  "description": "Teste da aplicação web C.R.U.D FrontEnd com o framework cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Élida Beatriz Gonçalves",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^9.6.0"
+  }
+}
