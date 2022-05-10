@@ -4,9 +4,10 @@ Feature: Remover um usuário
     Para que suas informações não estejam mais registradas
 
     Background: Acessar lista
-        Given acessei a tela de lista 
-
+        Given acessei a plataforma do CRUD FrontEnd
+        
     Scenario: Remover usuário com sucesso 
-        When clico para remover um usuário 
-        Then visualizo mensagem de "Usuário removido!"        
+        And existem usuários cadastrados para remover
+        When seleciono para remover um usuário 
+        Then visualizo mensagem de sucesso "Usuário removido!"        
 
