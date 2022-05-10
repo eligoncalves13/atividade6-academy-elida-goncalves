@@ -19,14 +19,13 @@ class DetalhesPage {
         cy.get(this.inputEmail).type(email);
     };
 
-    clicarEmSalvar() {
-        cy.contains("button", "Salvar").click();
-    };
-
-    preencherFormularioESalvar(nome, email){
+    preencherFormulario(nome, email){
         this.preencherNome(nome);
         this.preencherEmail(email);
-        this.clicarEmSalvar();
+    };
+
+    clicarEmSalvar() {
+        cy.contains("button", "Salvar").click();
     };
 
     verificarMensagemSucesso(seletor, mensagemSucesso){
@@ -40,8 +39,7 @@ class DetalhesPage {
     limparFormulario(){
         cy.get(this.inputNome).clear();
         cy.get(this.inputEmail).clear();
-    };
-    
+    };    
 }
 
 export var detalhesPage = new DetalhesPage();
