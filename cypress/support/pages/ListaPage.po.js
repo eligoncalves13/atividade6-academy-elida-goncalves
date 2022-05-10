@@ -4,7 +4,7 @@ class ListaPage {
     };
 
     clicarEmRemover(){
-        cy.get("button[data-test='userDataDelete']").eq(1).click();
+        cy.get("button[data-test='userDataDelete']").eq(0).click();
     };
 
     clicarEmConfirmarRemover(){
