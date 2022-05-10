@@ -12,7 +12,9 @@
   "author": "Élida Beatriz Gonçalves",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^9.6.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.1"
   }
 }
