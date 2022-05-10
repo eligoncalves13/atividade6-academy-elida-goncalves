@@ -1,0 +1,16 @@
+[
+    {
+        "id": "33fe94c0-1765-46b5-aacf-fb78ece95805",
+        "name": "Raro Academy",
+        "email": "raro@academy.com",
+        "createdAt": "2022-05-08T11:51:15.547Z",
+        "updatedAt": "2022-05-08T20:59:23.903Z"
+    },
+    {
+        "id": "55fe94c0-1765-46b5-aacf-fb78ece95816",
+        "name": "Raro Labs",
+        "email": "raro@labs.com",
+        "createdAt": "2022-05-08T11:51:15.547Z",
+        "updatedAt": "2022-05-08T20:59:23.903Z"
+    }
+]
