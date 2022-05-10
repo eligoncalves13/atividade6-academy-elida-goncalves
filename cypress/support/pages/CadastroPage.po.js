@@ -18,14 +18,13 @@ class CadastroPage{
         cy.get(this.inputEmail).type(email);
     };
 
-    clicarEmSalvar() {
-        cy.contains("button", "Salvar").click();
-    };
-
-    preencherFormularioESalvar(nome, email){
+    preencherFormulario(nome, email){
         this.preencherNome(nome);
         this.preencherEmail(email);
-        this.clicarEmSalvar();
+    };
+
+    clicarEmSalvar() {
+        cy.contains("button", "Salvar").click();
     };
 
     verificarMensagemSucesso(seletor, mensagemSucesso){
@@ -36,8 +35,6 @@ class CadastroPage{
     verificarMensagemErro(mensagemErro){
         cy.contains(mensagemErro).should("be.visible");
     };
-
-
 }
 
 export var cadastroPage = new CadastroPage();
