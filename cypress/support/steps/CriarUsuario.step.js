@@ -63,8 +63,3 @@ Then("visualizo mensagem de sucesso {string}", (mensagemSucesso) => {
 Then("visualizo mensagem de erro {string}", (mensagemErro) => {
     cadastroPage.verificarMensagemErro(mensagemErro);
 });
-
-
-
-
-
