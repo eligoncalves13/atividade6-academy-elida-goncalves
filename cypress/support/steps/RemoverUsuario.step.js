@@ -1,10 +1,17 @@
 import { listaPage } from "../pages/ListaPage.po"
 
-Given("acessei a tela de lista", () => {
+Given("acessei a plataforma do CRUD FrontEnd", () => {
     listaPage.visitar();
 });
 
-When("clico para remover um usuário", () => {
+And("existem usuários cadastrados para remover", () => {
+    cy.intercept("GET", "https://crud-api-academy.herokuapp.com/api/v1/users", {
+        statusCode: 200,
+        fixture: "doisUsuarios.json"
+    });
+});
+
+When("seleciono para remover um usuário", () => {
     listaPage.clicarEmRemover();
     listaPage.clicarEmConfirmarRemover();
 });
