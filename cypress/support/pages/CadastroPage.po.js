@@ -6,8 +6,20 @@ class CadastroPage{
         cy.visit("");
     };
 
-    abrirFormularioCadastro() {
+    clicarEmNovo() {
         cy.get("a[href='/users/novo']").click();
+    };
+
+    clicarEmSalvar() {
+        cy.contains("button", "Salvar").click();
+    };
+
+    clicarEmVoltar() {
+        cy.contains("a", "Voltar").click();
+    };
+
+    clicarNaLogo() {
+        cy.get("a[tabindex='-1']").click();
     };
 
     preencherNome(nome) {
@@ -23,8 +35,12 @@ class CadastroPage{
         this.preencherEmail(email);
     };
 
-    clicarEmSalvar() {
-        cy.contains("button", "Salvar").click();
+    verficiarAcessoPaginaCadastro(){
+        cy.url().should("equal", "https://academy-crud-frontend.herokuapp.com/users/novo");
+    };
+
+    verficiarAcessoPaginaInicial(){
+        cy.url().should("equal", "https://academy-crud-frontend.herokuapp.com/users");
     };
 
     verificarMensagemSucesso(seletor, mensagemSucesso){
@@ -34,7 +50,7 @@ class CadastroPage{
 
     verificarMensagemErro(mensagemErro){
         cy.contains(mensagemErro).should("be.visible");
-    };
+    };  
 }
 
 export var cadastroPage = new CadastroPage();
