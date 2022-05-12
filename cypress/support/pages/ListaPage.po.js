@@ -11,6 +11,22 @@ class ListaPage {
         cy.contains("button", "Confirmar").click();
     };
 
+    clicarEmCancelarRemover(){
+        cy.contains("button", "Cancelar").click();
+    };
+
+    clicarNoIconeFecharModal(){
+        cy.contains("button", "x").click();
+    };
+
+    clicarEmProximaPagina(){
+        cy.get("#paginacaoProximo").click();
+    };
+
+    clicarEmVoltarPagina(){
+        cy.get("#paginacaoVoltar").click();
+    };
+
     verificarMensagemSucesso(mensagemSucesso){
         cy.contains(mensagemSucesso).should("be.visible");
     };
@@ -23,20 +39,20 @@ class ListaPage {
         cy.contains(opcao).should("be.visible");
     };
 
-    clicarEmProximaPagina(){
-        cy.get("#paginacaoProximo").click();
-    };
-
-    clicarEmVoltarPagina(){
-        cy.get("#paginacaoVoltar").click();
-    };
-
     verificarListaUsuarios(){
         cy.get("#listaUsuarios").should("be.visible");
     };
 
     verificarPaginacaoAtiva(paginacao){
         cy.get(paginacao).should("not.be.disabled");
+    };
+
+    verificarUsuario(id){
+        cy.get(`a[href="/users/${id}"]`).should("be.visible");
+    };
+
+    verificarInexistenciaModal(){
+        cy.contains("div", "Deseja realmente remover este usuário ?").should("not.exist")
     };
     
 }
