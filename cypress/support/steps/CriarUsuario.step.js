@@ -5,16 +5,15 @@ Given("acessei a plataforma do CRUD FrontEnd", () => {
 });
 
 Given("acessei a tela de cadastro", () => {
-    cadastroPage.abrirFormularioCadastro();
+    cadastroPage.clicarEmNovo();
+    cadastroPage.verficiarAcessoPaginaCadastro();
 });
 
-When("informo os dados do usuário válido", (tabela) => {
-    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
-        fixture: "usuario.json",
-        method: "POST", 
+When("informo dados do usuário", (tabela) => {
+    cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
         statusCode: 201
     });
-    var dadosTabela = tabela.rowsHash();
+    const dadosTabela = tabela.rowsHash();
     cadastroPage.preencherFormulario(dadosTabela.nome, dadosTabela.email);
 });
 
@@ -22,43 +21,39 @@ When("não informo dados do usuário", () => {
 
 });
 
-When("informo email de usuário válido", (tabela) => {
-    var dadosTabela = tabela.rowsHash();
+When("informo email do usuário", (tabela) => {
+    const dadosTabela = tabela.rowsHash();
     cadastroPage.preencherEmail(dadosTabela.email);
 });
 
-When("informo nome de usuário válido", (tabela) => {
-    var dadosTabela = tabela.rowsHash();
+When("informo nome do usuário", (tabela) => {
+    const dadosTabela = tabela.rowsHash();
     cadastroPage.preencherNome(dadosTabela.nome);
 });
 
-When("informo email de usuário inválido", (tabela) => {
-    var dadosTabela = tabela.rowsHash();
-    cadastroPage.preencherFormulario(dadosTabela.nome, dadosTabela.email)
-});
-
-When("informo email de usuário já cadastrado", (tabela) => {
-    cy.intercept("https://crud-api-academy.herokuapp.com/api/v1/users", {
-        fixture: "usuario.json",
-        method: "POST", 
+And("informo email já cadastrado do usuário", (tabela) => {
+    cy.intercept("POST", "https://crud-api-academy.herokuapp.com/api/v1/users", {
         statusCode: 422
     });
-    var dadosTabela = tabela.rowsHash();
-    cadastroPage.preencherFormulario(dadosTabela.nome, dadosTabela.email)
+    const dadosTabela = tabela.rowsHash();
+    cadastroPage.preencherEmail(dadosTabela.email);
 });
 
-When("informo nome com mais de 100 caracteres", (tabela) => {
-    var dadosTabela = tabela.rowsHash();
-    cadastroPage.preencherFormulario(dadosTabela.nome, dadosTabela.email)
-});
-
-When("informo email com mais de 60 caracteres", (tabela) => {
-    var dadosTabela = tabela.rowsHash();
-    cadastroPage.preencherFormulario(dadosTabela.nome, dadosTabela.email)
+And("informo email do usuário", (tabela) => {
+    const dadosTabela = tabela.rowsHash();
+    cadastroPage.preencherEmail(dadosTabela.email);
 });
 
 When("salvo o formulário", () => {
     cadastroPage.clicarEmSalvar();
+});
+
+When("seleciono para voltar", () => {
+    cadastroPage.clicarEmVoltar();
+});
+
+When("seleciono a logo", () => {
+    cadastroPage.clicarNaLogo();
 });
 
 Then("visualizo mensagem de sucesso {string}", (mensagemSucesso) => {
@@ -67,4 +62,8 @@ Then("visualizo mensagem de sucesso {string}", (mensagemSucesso) => {
 
 Then("visualizo mensagem de erro {string}", (mensagemErro) => {
     cadastroPage.verificarMensagemErro(mensagemErro);
+});
+
+Then("visualizo a tela inicial", () => {
+    cadastroPage.verficiarAcessoPaginaInicial();
 });
