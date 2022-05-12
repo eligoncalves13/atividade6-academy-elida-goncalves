@@ -47,7 +47,7 @@ class CadastroPage{
         cy.contains(seletor, mensagemSucesso).should("be.visible");
         // cy.get(".go3958317564").should("have.text", "Usuário salvo com sucesso!")
     };
-
+    
     verificarMensagemErro(mensagemErro){
         cy.contains(mensagemErro).should("be.visible");
     };  
