@@ -1,4 +1,5 @@
 class DetalhesPage {
+    inputId = "input[name='id']";
     inputNome = "#userName";
     inputEmail = "#userEmail";
 
@@ -6,9 +7,38 @@ class DetalhesPage {
         cy.visit("");
     };
 
-    abrirFormularioEdicao() {
+    clicarEmVerDetalhes() {
         cy.get("#userDataDetalhe").click();
         cy.contains("button", "Editar").click();
+    };
+
+    clicarEmSalvar() {
+        cy.contains("button", "Salvar").click();
+    };
+
+    clicarEmCancelar() {
+        cy.contains("button", "Cancelar").click();
+    };
+
+    clicarEmVoltar() {
+        cy.contains("a", "Voltar").click();
+    };
+
+    clicarNaLogo() {
+        cy.get("a[tabindex='-1']").click();
+    };
+
+    limparFormulario(){
+        cy.get(this.inputNome).clear();
+        cy.get(this.inputEmail).clear();
+    };
+
+    limparNome(){
+        cy.get(this.inputNome).clear();
+    };
+
+    limparEmail(){
+        cy.get(this.inputEmail).clear();
     };
 
     preencherNome(nome) {
@@ -24,8 +54,8 @@ class DetalhesPage {
         this.preencherEmail(email);
     };
 
-    clicarEmSalvar() {
-        cy.contains("button", "Salvar").click();
+    verficiarAcessoPaginaInicial(){
+        cy.url().should("equal", "https://academy-crud-frontend.herokuapp.com/users");
     };
 
     verificarMensagemSucesso(seletor, mensagemSucesso){
@@ -34,12 +64,21 @@ class DetalhesPage {
 
     verificarMensagemErro(mensagemErro){
         cy.contains(mensagemErro).should("be.visible");
+    };     
+
+    verificarCamposDesativados(){
+        cy.get(this.inputNome).should("be.disabled");
+        cy.get(this.inputEmail).should("be.disabled");
+        cy.contains("button", "Salvar").should("be.disabled");
     };
 
-    limparFormulario(){
-        cy.get(this.inputNome).clear();
-        cy.get(this.inputEmail).clear();
-    };    
+    verificarCampoId(id){
+        cy.get(this.inputId).should('have.value', id);
+    };
+
+    verificarIdNaURL(id){
+        cy.url().should("equal", `https://academy-crud-frontend.herokuapp.com/users/${id}`);
+    };
 }
 
 export var detalhesPage = new DetalhesPage();
